@@ -1,0 +1,30 @@
+:root{
+    --darkColor : #212529;
+    --primaryColor : #0d6efd;
+}
+
+
+html{
+    box-sizing: border-box;
+}
+*{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+nav{
+    background-color: var(--primaryColor);
+    /*border: 2px solid black;*/
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+.main-nav{
+    /*border: 2px solid red;
+    margin: 0px 0px;*/
+    padding: 0px 0px;
+}
+
+/*.main-nav a, span{
+    border: 1px solid black;
+}*/

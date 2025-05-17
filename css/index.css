@@ -1,0 +1,90 @@
+:root{
+    --darkColor : #212529;
+    --primaryColor : #0d6efd;
+}
+
+
+html{
+    box-sizing: border-box;
+}
+*{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+/*.container{
+    border: 1px solid black;
+}*/
+
+.formulaire{
+   /* border: 1px solid blueviolet;*/
+    max-width: 500px;
+    border-radius: 30px;
+    background-color: var(--darkColor);
+}
+
+form, div{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+/*form{
+    border: 1px solid greenyellow;
+}*/
+
+.row p{
+    text-align: center;
+}
+
+/*.titre{
+    border: 1px solid black;
+}*/
+
+span i{
+    font-size: 100px;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    color: var(--primaryColor);
+}
+
+button{
+    background-color: var(--primaryColor);
+    color: var(--primaryColor);
+    min-width: 95px;
+}
+
+span{
+    /*border: 1px solid yellow;*/
+    margin: 0px 0px;
+    padding: 0px 0px;
+    /*height: 50px;
+    width: 50px;*/
+}
+
+.icon-user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*border: 5px solid white;
+    height: 100px;
+   
+    width: 50px;*/
+}
+
+.message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    /*border: 2px solid white;*/
+}
+
+.message p{
+    margin: 0px 0px;
+    padding: 0px 0px;
+    color: white;
+}
+
+/*.form-input{
+    border: 2px solid blue;
+}*/
