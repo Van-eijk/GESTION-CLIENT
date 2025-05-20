@@ -15,7 +15,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="" class="nav-link text-dark">Ajouter un client</a>
+                        <a href="ajouterclient.php" class="nav-link text-dark">Ajouter un client</a>
                     </li>
 
                     <li class="nav-item">

@@ -1,0 +1,94 @@
+.main-container{
+    border: 1px solid black;
+    margin-top: 57px;
+    min-width: 350px;
+    /*margin: 0px;*/
+    padding: 0px;
+    
+}
+
+.main-card-client{
+    border: 2px solid black;
+    margin: 0px;
+    padding: 0px;
+}
+
+.main-card-client h3{
+    text-align: center;
+}
+
+
+
+
+.main-card-client form{
+    border: 2px solid red;
+    padding: 0px 0px;
+}
+
+.info-client{
+    border: 5px solid orange;
+    margin: 0px;
+    padding: 0px;
+}
+
+.options-card{
+    border: 5px solid red;
+    margin: 0px;
+    padding: 0px;
+    width: 30%;
+    min-width: 217px;
+}
+
+.photo-profil-client{
+    border: 2px solid yellow;
+    height: 200px;
+    width: 200px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+.picture-client{
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    cursor: pointer;
+}
+
+.picture-client i{
+    font-size: 50px;
+}
+
+.photo-client{
+    display: none;
+}
+
+.photo-profil-client img{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.info-nom{
+    border: 2px solid blue;
+}
+
+/*.nom-client{
+    border: 2px solid yellow;
+}*/
+.options-card a{
+    display: inline-block;
+    text-decoration: none;
+    border: 2px solid black;
+    width: 150px;
+    text-align: center;
+    margin: 5px 5px;
+
+}
+
+.options-card input{
+    width: 150px;
+    margin: 5px 5px;
+}

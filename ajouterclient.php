@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier client</title>
+    <title>Ajouter client</title>
 
 
       <!-- lien pour integrer le framework boostrap -->
@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/14273d579a.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/modifierclient.css">
+    <link rel="stylesheet" href="css/ajouterclient.css">
 
 </head>
 <body>
@@ -26,7 +26,7 @@
 
             <div class="row d-flex justify-content-center main-card-client">
 
-                <h3 class="fs-5 fs-md-1" >MODIFICATION DES INFORMATIONS DU CLIENT</h3>
+                <h3 class="fs-5 fs-md-1" >AJOUTER UN CLIENT</h3>
 
 
                 <!-- insertion du formulaire-->
@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="row mt-3 d-flex justify-content-around options-card">
-                        <a href="detailclient.php">ANNULER</a>
+                        <a href="accueil.php">ANNULER</a>
                         <input type="submit" value="ENREGISTRER">
 
                     </div>
