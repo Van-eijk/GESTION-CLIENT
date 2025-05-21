@@ -23,6 +23,7 @@
 
 
             <div class="row d-flex justify-content-center main-card-client">
+                <h3>INFORMATIONS DU CLIENT</h3>
                 <div class="row d-flex justify-content-center info-client">
                     <div class="col-12 col-sm-4 me-0 me-sm-3 photo-profil-client">
                         <img src="img/defaultuser.jpg" alt="image du client">
@@ -66,6 +67,8 @@
                 <div class="row mt-3 d-flex justify-content-around options-card">
                     <a href="accueil.php">OK</a>
                     <a href="modifierclient.php">MODIFIER</a>
+                    <a href="accueil.php">SUPPRIMER</a>
+
 
                 </div>
 
