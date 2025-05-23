@@ -99,6 +99,15 @@
 
         }
 
+        public function deconnexionMembre($lien){
+             session_start();
+            $_SESSION = array();
+            $_SESSION = array();
+            session_destroy();
+            header($lien);
+
+        }
+
         public function modifierPseudo(){
 
         }
