@@ -3,18 +3,33 @@
     class Membre{
 
         // Attributs
+        private $idMembre;
         private $pseudo ;
         private $email ;
         private $motDePasse ;
+        private $dateInscription ;
 
 
         //Accesseurs
 
+        public function getIdMembre(){
+            return $this->idMembre;
+        }
+        public function setIdMembre($idMembre){
+            $this->idMembre = $idMembre ;
+        }
         public function getPseudo(){
             return $this -> pseudo;
         }
         public function setPseudo($pseudoIn){
             $this->pseudo = $pseudoIn ;
+        }
+
+        public function getDateInscription(){
+            return $this->dateInscription ;
+        }
+        public function setDateInscription($dateInscription){
+            $this->dateInscription = $dateInscription ;
         }
 
 
@@ -36,12 +51,51 @@
 
         // METHODES
 
-        public function inscriptionMembre($pseudo, $email, $motDePasse){
+        public function inscriptionMembre($pseudo, $email, $motDePasse, $lienFichierBDD){
             //setPseudo($pseudo);
+            include $lienFichierBDD ;
+            
+            $reqMembre = $connexionDataBase -> prepare('INSERT INTO membre(pseudo,email,motdepasse) VALUES (:pseudo, :email, :motdepasse)');
+            $reqMembre ->execute(array(
+                'pseudo' => $pseudo,
+                'email' => $email,
+                'motdepasse' => $motDePasse
+
+            ));
 
         }
 
-        public function connexionMembre(){
+        public function connexionMembre($pseudo, $motDePasse, $lienFichierBDD, $lienPageAccueil){
+            include $lienFichierBDD ;
+            $motDePasse = sha1($motDePasse);
+
+            $reqConnexionMembre = $connexionDataBase ->prepare("SELECT * FROM membre WHERE pseudo = :pseud AND motdepasse = :mdp");
+            $reqConnexionMembre -> execute(array(
+                "pseud" => $pseudo,
+                "mdp"=> $motDePasse));
+
+            $resultatConnexionMembre = $reqConnexionMembre -> fetch(); // On récupère les informations depuis la base de données
+
+            if(!$resultatConnexionMembre){
+
+                return false;
+
+            }
+            else{
+
+                //echo "bobo" ;
+                
+                session_start();
+                $_SESSION["idmembre"] = $resultatConnexionMembre["idmembre"];
+                $_SESSION["pseudo"] = $resultatConnexionMembre["pseudo"];
+                $_SESSION["email"] = $resultatConnexionMembre["email"];
+                $_SESSION["dateinscription"] = $resultatConnexionMembre["dateinscription"];
+                header($lienPageAccueil);
+
+
+
+                
+            }
 
         }
 
