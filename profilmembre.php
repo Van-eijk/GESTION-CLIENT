@@ -1,3 +1,14 @@
+<?php
+    session_start();
+?>
+
+
+<?php
+    if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){ 
+    ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,3 +84,12 @@
 
 </body>
 </html>
+
+
+<?php
+    }
+?>
+
+
+
+
