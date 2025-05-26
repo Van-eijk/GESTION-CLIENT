@@ -155,7 +155,24 @@
             
         }
 
-        public function ajouterClient(){
+        public function ajouterClient($lienFichierBDD, $idClientMembre, $nomClient, $prenomClient, $villeClient, $quartierClient, $telephoneClient, $commentaireClient, $lienPhotoClient){
+
+            include $lienFichierBDD ;
+            
+            $reqAjoutClient = $connexionDataBase -> prepare('INSERT INTO clientt(idclientmembre,nomclient,prenomclient,villeclient,quartierclient,telephoneclient,commentaireclient,lienphotoclient) VALUES (:idclientmembre, :nomclient, :prenomclient, :villeclient, :quartierclient, :telephoneclient, :commentaireclient, :lienphotoclient)');
+            $reqAjoutClient ->execute(array(
+                'idclientmembre' => $idClientMembre,
+                'nomclient' => $nomClient,
+                'prenomclient' => $prenomClient,
+                'villeclient' => $villeClient,
+                'quartierclient' => $quartierClient,
+                'telephoneclient' => $telephoneClient,
+                'commentaireclient' => $commentaireClient,
+                'lienphotoclient' => $lienPhotoClient,
+                
+                
+
+            ));
             
 
         }
