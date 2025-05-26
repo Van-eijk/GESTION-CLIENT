@@ -19,7 +19,7 @@
             $this->idMembre = $idMembre ;
         }
         public function getPseudo(){
-            return $this -> pseudo;
+            return $this->pseudo;
         }
         public function setPseudo($pseudoIn){
             $this->pseudo = $pseudoIn ;
@@ -34,7 +34,7 @@
 
 
         public function getEmail(){
-            return $this -> email;
+            return $this->email;
         }
         public function setEmail($emailIn){
             $this->email = $emailIn ;
@@ -42,7 +42,7 @@
 
 
         public function getMotDePasse(){
-            return $this -> motDePasse;
+            return $this->motDePasse;
         }
         public function setMotDePasse($motDePasseIn){
             $this->motDePasse = $motDePasseIn ;
@@ -120,7 +120,43 @@
             
         }
 
+        public function importerPhotoClient($fichierPhotoClient,$cheminSauvegarde,$telephoneClient,$nomClient){
+           // $nomFichier = $cheminSauvegarde['name'];
+            $dateDuJour = date("dmyhis");
+            $cheminDefinitif = "";
+            $nomFichier="";
+
+            $name = $fichierPhotoClient['name'];
+            $cheminTemporaire = $fichierPhotoClient['tmp_name'];
+
+            
+
+            $infoFichier = pathinfo($name);
+            $extension_upload = $infoFichier['extension']; // On recupère l'extension de chaque fichier
+
+            $extension_autorisees = ['jpg','jpeg','png']; // la liste des extensions autorisées
+
+            // verification de l'extension du fichier
+
+            if(in_array($extension_upload,$extension_autorisees )){
+                $nomFichier = basename($name); // on recupère le nom d'origine du fichier
+                $nomFichier = $nomClient . $telephoneClient ."_". $dateDuJour ;
+                $cheminDefinitif = $cheminSauvegarde . $nomFichier ; // on definit l'emplacement definitif du fichier
+                move_uploaded_file($cheminTemporaire,$cheminDefinitif); // on stocke le fichier dans le serveur
+
+            
+            }
+            else{
+                return false;
+            }
+
+            return $cheminDefinitif ;  
+            
+            
+        }
+
         public function ajouterClient(){
+            
 
         }
 
