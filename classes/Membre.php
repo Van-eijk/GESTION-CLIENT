@@ -120,7 +120,7 @@
             
         }
 
-        public function importerPhotoClient($fichierPhotoClient,$cheminSauvegarde,$telephoneClient,$nomClient){
+        public function importerPhotoClient($fichierPhotoClient,$cheminSauvegardeImage,$telephoneClient,$nomClient){
            // $nomFichier = $cheminSauvegarde['name'];
             $dateDuJour = date("dmyhis");
             $cheminDefinitif = "";
@@ -141,8 +141,10 @@
             if(in_array($extension_upload,$extension_autorisees )){
                 $nomFichier = basename($name); // on recupère le nom d'origine du fichier
                 $nomFichier = $nomClient . $telephoneClient ."_". $dateDuJour ;
-                $cheminDefinitif = $cheminSauvegarde . $nomFichier ; // on definit l'emplacement definitif du fichier
+                $cheminDefinitif = $cheminSauvegardeImage . $nomFichier ; // on definit l'emplacement definitif du fichier
                 move_uploaded_file($cheminTemporaire,$cheminDefinitif); // on stocke le fichier dans le serveur
+
+                 return $cheminDefinitif ;
 
             
             }
@@ -150,17 +152,25 @@
                 return false;
             }
 
-            return $cheminDefinitif ;  
+             
             
             
         }
 
-        public function ajouterClient($lienFichierBDD, $idClientMembre, $nomClient, $prenomClient, $villeClient, $quartierClient, $telephoneClient, $commentaireClient, $lienPhotoClient){
+        public function ajouterClient($lienFichierBDD, $lienPhotoClientDefaut, $cheminSauvegardeImage,  $idClientMembre, $nomClient, $prenomClient, $villeClient, $quartierClient, $telephoneClient, $commentaireClient, $fichierPhotoClient="Pas de photo"){
+
+
 
             include $lienFichierBDD ;
-            
-            $reqAjoutClient = $connexionDataBase -> prepare('INSERT INTO clientt(idclientmembre,nomclient,prenomclient,villeclient,quartierclient,telephoneclient,commentaireclient,lienphotoclient) VALUES (:idclientmembre, :nomclient, :prenomclient, :villeclient, :quartierclient, :telephoneclient, :commentaireclient, :lienphotoclient)');
-            $reqAjoutClient ->execute(array(
+
+            // Si le membre n'a pas choisi une photo pour le client, alors la variable $fichierPhotoClient sera une chaine de caractère et on va choisir une photo par defaut
+
+            if(is_string($fichierPhotoClient)){  
+
+                // On enregistre le client avec le lien de la photo par defaut
+
+                $reqAjoutClient = $connexionDataBase -> prepare('INSERT INTO clientt(idclientmembre,nomclient,prenomclient,villeclient,quartierclient,telephoneclient,commentaireclient,lienphotoclient) VALUES (:idclientmembre, :nomclient, :prenomclient, :villeclient, :quartierclient, :telephoneclient, :commentaireclient, :lienphotoclient)');
+                $reqAjoutClient ->execute(array(
                 'idclientmembre' => $idClientMembre,
                 'nomclient' => $nomClient,
                 'prenomclient' => $prenomClient,
@@ -168,12 +178,51 @@
                 'quartierclient' => $quartierClient,
                 'telephoneclient' => $telephoneClient,
                 'commentaireclient' => $commentaireClient,
-                'lienphotoclient' => $lienPhotoClient,
-                
-                
+                'lienphotoclient' => $lienPhotoClientDefaut,
 
-            ));
-            
+                ));
+
+                return true ;
+
+            }
+            else{
+
+                // Au cas où le membre a choisi la photo du client, on importe la photo dans le serveur avant d'enregistrer le client dans la base de données
+
+                $resultatImportationPhoto = $this->importerPhotoClient($fichierPhotoClient,$cheminSauvegardeImage,$telephoneClient,$nomClient);  //Importation de la photo du client
+
+                if(is_string($resultatImportationPhoto)){
+
+                    // Si la variable $resultatImportationPhoto est une chaine de caractère, c'est donc le lien de photo du client qui a été généré après l'importation de la photo dans le serveur
+
+
+                    $reqAjoutClient = $connexionDataBase -> prepare('INSERT INTO clientt(idclientmembre,nomclient,prenomclient,villeclient,quartierclient,telephoneclient,commentaireclient,lienphotoclient) VALUES (:idclientmembre, :nomclient, :prenomclient, :villeclient, :quartierclient, :telephoneclient, :commentaireclient, :lienphotoclient)');
+                    $reqAjoutClient ->execute(array(
+                    'idclientmembre' => $idClientMembre,
+                    'nomclient' => $nomClient,
+                    'prenomclient' => $prenomClient,
+                    'villeclient' => $villeClient,
+                    'quartierclient' => $quartierClient,
+                    'telephoneclient' => $telephoneClient,
+                    'commentaireclient' => $commentaireClient,
+                    'lienphotoclient' => $resultatImportationPhoto,
+                    
+                    
+
+                    ));
+
+                    return true; // On retourne true pour confirmer que le client a bien été enregistrer dans la base de données y compris la photo du client
+
+                }
+                else{
+
+                    // Au cas où la variable $resultatImportationPhoto n'est pas une chaine de caratère, ça veut dire que l'importation de la photo ne s'est pas dérouler correctement du fait de son type alors, on retourne false
+                    return false;
+                }
+
+            }
+
+   
 
         }
 

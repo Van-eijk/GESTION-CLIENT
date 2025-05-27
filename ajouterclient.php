@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="form-floating mb-3 Quartie-client">
-                                <input type="text" name="quatierClient" class="form-control form-control-sm "
+                                <input type="text" name="quartierClient" class="form-control form-control-sm "
                                     id="floatingInput" placeholder="Quartier">
                                 <label for="floatingInput">Quartier</label>
                             </div>
