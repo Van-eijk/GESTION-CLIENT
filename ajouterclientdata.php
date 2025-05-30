@@ -66,9 +66,9 @@
                     $commentaireClient = $_POST["commentaireClient"] ;
 
                     if(isset($_FILES["photoClient"])){
-                        echo "bonjour";
+                        //echo "bonjour";
 
-                       /* $fichierPhotoClient = $_FILES["photoClient"] ;
+                       $fichierPhotoClient = $_FILES["photoClient"] ;
 
                         if($_FILES['photoClient']['error'] == 0 AND $_FILES['photoClient']['size'] <= 1000000){
 
@@ -79,13 +79,13 @@
 
                             }
                             else{
-                                //header("location:ajouterclient.php");
+                                header("location:ajouterclient.php");
                             }
                             
-                        }*/
+                        }
                         
                     }else{
-                        echo"hello";
+                        //echo"hello";
 
                          $resultatAjouterClient = $membre->ajouterClient($lienFichierBDD,$cheminPhotoDefaut,$dossierSauv,$idclientmembre,$nomClient,$prenomClient,$villeClient,$quartierClient,$telephoneClient,$commentaireClient);
 
@@ -94,7 +94,7 @@
 
                             }
                             else{
-                                //header("location:ajouterclient.php");
+                                header("location:ajouterclient.php");
                             }
                         
                     }
