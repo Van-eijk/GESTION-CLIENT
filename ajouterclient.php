@@ -44,7 +44,7 @@
 
                 <!-- insertion du formulaire-->
 
-                <form action="ajouterclientdata.php" method="post" class="row d-flex justify-content-center">
+                <form action="ajouterclientdata.php" method="post" class="row d-flex justify-content-center" enctype="multipart/form-data">
 
 
                     <div class="row d-flex justify-content-center info-client">
@@ -131,6 +131,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+
 
 </body>
 
