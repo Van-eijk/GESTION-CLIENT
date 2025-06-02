@@ -64,11 +64,9 @@
                     }
 
                     $commentaireClient = $_POST["commentaireClient"] ;
-                   
-                    
 
                     if(isset($_FILES["photoClient"])){
-                        //echo "bonjour";
+                        echo "bonjour";
 
                         $fichierPhotoClient = $_FILES["photoClient"] ;
 
@@ -93,10 +91,10 @@
                     else{
                         //echo "hello";
 
-                        $resultatAjouterClient = $membre->ajouterClient($lienFichierBDD,$cheminPhotoDefaut,$dossierSauv,$idclientmembre,$nomClient,$prenomClient,$villeClient,$quartierClient,$telephoneClient,$commentaireClient);
+                         $resultatAjouterClient = $membre->ajouterClient($lienFichierBDD,$cheminPhotoDefaut,$dossierSauv,$idclientmembre,$nomClient,$prenomClient,$villeClient,$quartierClient,$telephoneClient,$commentaireClient);
 
-                        if($resultatAjouterClient == false){
-                            $erreurAjoutClient = "Erreur lors de l'enregistrement d'un client : l'extension de la photo n'est pas correct";
+                            if($resultatAjouterClient == false){
+                                $erreurAjoutClient = "Erreur lors de l'enregistrement d'un client : l'extension de la photo n'est pas correct";
 
                         }
                         else{
@@ -104,10 +102,7 @@
                         }
                         
                     }
-                        
                 }
             }
         }
     }
-
-?>
