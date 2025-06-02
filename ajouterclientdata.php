@@ -65,43 +65,17 @@
 
                     $commentaireClient = $_POST["commentaireClient"] ;
 
-                    if(isset($_FILES["photoClient"])){
-                        echo "bonjour";
+                    $resultatAjouterClient = $membre->ajouterClient($lienFichierBDD,$cheminPhotoDefaut,$dossierSauv,$idclientmembre,$nomClient,$prenomClient,$villeClient,$quartierClient,$telephoneClient,$commentaireClient);
 
-                        $fichierPhotoClient = $_FILES["photoClient"] ;
+                    if($resultatAjouterClient == false){
+                        $erreurAjoutClient = "Erreur lors de l'enregistrement d'un client : l'extension de la photo n'est pas correct";
 
-                        if($_FILES['photoClient']['error'] == 0 AND $_FILES['photoClient']['size'] <= 1000000){
-
-                            $resultatAjouterClient = $membre->ajouterClient($lienFichierBDD,$cheminPhotoDefaut,$dossierSauv,$idclientmembre,$nomClient,$prenomClient,$villeClient,$quartierClient,$telephoneClient,$commentaireClient,$fichierPhotoClient);
-
-                            if($resultatAjouterClient == false){
-                                $erreurAjoutClient = "Erreur lors de l'enregistrement d'un client : l'extension de la photo n'est pas correct";
-
-                            }
-                            else{
-                                header("location:ajouterclient.php");
-                            }
-                            
-                        }
-                        
-
-                        
-                        
                     }
                     else{
-                        //echo "hello";
-
-                         $resultatAjouterClient = $membre->ajouterClient($lienFichierBDD,$cheminPhotoDefaut,$dossierSauv,$idclientmembre,$nomClient,$prenomClient,$villeClient,$quartierClient,$telephoneClient,$commentaireClient);
-
-                            if($resultatAjouterClient == false){
-                                $erreurAjoutClient = "Erreur lors de l'enregistrement d'un client : l'extension de la photo n'est pas correct";
-
-                        }
-                        else{
-                            header("location:ajouterclient.php");
-                        }
-                        
+                        header("location:ajouterclient.php");
                     }
+
+                    
                 }
             }
         }
