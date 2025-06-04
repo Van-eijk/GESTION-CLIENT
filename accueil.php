@@ -61,7 +61,7 @@
 
                 while($resultatReqAfficheClient = $reqAfficheClient->fetch()){  ?>
 
-                <a href="detailclient.php" class="m-1" id="<?php echo $resultatReqAfficheClient['telephoneclient'] ;?>">
+                <a href="detailclient.php?idclient=<?php echo $resultatReqAfficheClient['idclient'] ;?>" class="m-1" id="">
                     <div class="card item-card">
                         <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
                         <div class="card-body">
