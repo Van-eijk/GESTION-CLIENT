@@ -1,10 +1,12 @@
 <?php
     session_start();
+    include 'database/configdatabase.php';
 ?>
 
 
 <?php
     if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){ 
+        $idMembre = $_SESSION["idmembre"] ;
     ?>
 
 
@@ -51,15 +53,27 @@
 
             <div class="row mt-3 d-flex justify-content-between list-costumer">
 
+                <?php
+                $reqAfficheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclientmembre = :userConnected');
+                $reqAfficheClient ->execute(array(
+                    'userConnected' => $idMembre 
+                ));
 
+                while($resultatReqAfficheClient = $reqAfficheClient->fetch()){  ?>
 
-                <a href="detailclient.php" class="m-1">
+                <a href="detailclient.php" class="m-1" id="<?php echo $resultatReqAfficheClient['telephoneclient'] ;?>">
                     <div class="card item-card">
                         <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
                         <div class="card-body">
-                            <h5 class="card-title">BOBO Van</h5>
-                            <p class="card-text">Douala</p>
-                            <p class="card-text">+237 695 74 06 39</p>
+                            <h5 class="card-title">
+                                <?php 
+                                if($resultatReqAfficheClient['prenomclient'] == "Sans prenom"){
+                                    $resultatReqAfficheClient['prenomclient'] = "";
+                                }
+                                echo $resultatReqAfficheClient['nomclient'] . ' ' .  $resultatReqAfficheClient['prenomclient'] ;?>
+                            </h5>
+                            <p class="card-text"><?php echo $resultatReqAfficheClient['villeclient'] ;?></p>
+                            <p class="card-text"><?php echo $resultatReqAfficheClient['telephoneclient'] ;?></p>
 
                             <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
 
@@ -67,123 +81,13 @@
                     </div>
                 </a>
 
+                <?php
+                }
+            ?>
 
 
 
 
-
-                <a href="detailclient.php" class="m-1">
-                    <div class="card item-card">
-                        <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
-                        <div class="card-body">
-                            <h5 class="card-title">BOBO Van</h5>
-                            <p class="card-text">Douala</p>
-                            <p class="card-text">+237 695 74 06 39</p>
-
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
-
-                        </div>
-                    </div>
-                </a>
-
-
-
-
-
-
-
-
-                <a href="detailclient.php" class="m-1">
-                    <div class="card item-card">
-                        <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
-                        <div class="card-body">
-                            <h5 class="card-title">BOBO Van</h5>
-                            <p class="card-text">Douala</p>
-                            <p class="card-text">+237 695 74 06 39</p>
-
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
-
-                        </div>
-                    </div>
-                </a>
-
-
-
-
-
-
-                <a href="detailclient.php" class="m-1">
-                    <div class="card item-card">
-                        <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
-                        <div class="card-body">
-                            <h5 class="card-title">BOBO Van</h5>
-                            <p class="card-text">Douala</p>
-                            <p class="card-text">+237 695 74 06 39</p>
-
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
-
-                        </div>
-                    </div>
-                </a>
-
-
-
-
-
-
-
-
-                <a href="detailclient.php" class="m-1">
-                    <div class="card item-card">
-                        <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
-                        <div class="card-body">
-                            <h5 class="card-title">BOBO Van</h5>
-                            <p class="card-text">Douala</p>
-                            <p class="card-text">+237 695 74 06 39</p>
-
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
-
-                        </div>
-                    </div>
-                </a>
-
-
-
-
-
-                <a href="detailclient.php" class="m-1">
-                    <div class="card item-card">
-                        <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
-                        <div class="card-body">
-                            <h5 class="card-title">BOBO Van</h5>
-                            <p class="card-text">Douala</p>
-                            <p class="card-text">+237 695 74 06 39</p>
-
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
-
-                        </div>
-                    </div>
-                </a>
-
-
-
-
-
-
-
-                <a href="detailclient.php" class="m-1">
-                    <div class="card item-card">
-                        <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
-                        <div class="card-body">
-                            <h5 class="card-title">BOBO Van</h5>
-                            <p class="card-text">Douala</p>
-                            <p class="card-text">+237 695 74 06 39</p>
-
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
-
-                        </div>
-                    </div>
-                </a>
 
 
 
