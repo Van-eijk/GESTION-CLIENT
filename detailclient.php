@@ -95,7 +95,7 @@
                             <div class="row mt-3 d-flex justify-content-around options-card">
                                 <a href="accueil.php">OK</a>
                                 <a href="modifierclient.php">MODIFIER</a>
-                                <a href="accueil.php">SUPPRIMER</a>
+                                <a href="supprimerclient.php?idclientsupprimer=<?php echo  $idClient ;?>">SUPPRIMER</a>
 
 
                             </div>
