@@ -1,11 +1,29 @@
 <?php
     session_start();
+    include "database/configdatabase.php";
+
 ?>
 
 
 <?php
     if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){ 
+        if(isset($_GET["idclientmodifier"])){
+            $idClientModifier = $_GET["idclientmodifier"];
+
+
+
+            
+       
+            
+            
     ?>
+
+
+
+    
+
+
+
 
 
 <!DOCTYPE html>
@@ -33,15 +51,32 @@
     <div class="row main-container">
 
 
+    <?php
+
+        $reqAfficheDetailClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclient = :idcliente');
+        $reqAfficheDetailClient ->execute(array(
+            'idcliente'=> $idClientModifier
+        ));
+        $resultatAfficheClientDetail = $reqAfficheDetailClient ->fetch();
+        
+
+       
+        
+    ?>
+
+
+           
+
+
 
             <div class="row d-flex justify-content-center main-card-client">
 
-                <h3 class="fs-5 fs-md-1" >MODIFICATION DES INFORMATIONS DU CLIENT</h3>
+                <h3 class="fs-5 fs-md-1" >MODIFICATION DES INFORMATIONS DU CLIENT  <?php echo $resultatAfficheClientDetail["nomclient"] ; ?></h3>
 
 
                 <!-- insertion du formulaire-->
 
-                <form action="" method="post" class="row d-flex justify-content-center" >
+                <form action="modifierclientdata.php" method="post" class="row d-flex justify-content-center" >
 
 
                     <div class="row d-flex justify-content-center info-client">
@@ -59,32 +94,32 @@
                     <div class="col-12 col-sm-8 mt-3 mt-sm-0 info-nom">
 
                         <div class="form-floating mb-3 nom-client">
-                            <input type="text" class="form-control form-control-sm " id="floatingInput" placeholder="Nom">
+                            <input type="text" class="form-control form-control-sm " name="nomClient" id="floatingInput" placeholder="Nom">
                             <label for="floatingInput">Nom</label>
                         </div>
 
                          <div class="form-floating mb-3 prenom-client">
-                            <input type="text" class="form-control form-control-sm " id="floatingInput" placeholder="Prenom">
+                            <input type="text" class="form-control form-control-sm " name="prenomClient" id="floatingInput" placeholder="Prenom">
                             <label for="floatingInput">Prenom</label>
                         </div>
 
                         <div class="form-floating mb-3 ville-client">
-                            <input type="text" class="form-control form-control-sm " id="floatingInput" placeholder="Ville">
+                            <input type="text" class="form-control form-control-sm " name="villeClient" id="floatingInput" placeholder="Ville">
                             <label for="floatingInput">Ville</label>
                         </div>
 
                         <div class="form-floating mb-3 Quartie-client">
-                            <input type="text" class="form-control form-control-sm " id="floatingInput" placeholder="Quartier">
+                            <input type="text" class="form-control form-control-sm " name="quartierClient" id="floatingInput" placeholder="Quartier">
                             <label for="floatingInput">Quartier</label>
                         </div>
 
                          <div class="form-floating mb-3 telephone-client">
-                            <input type="tel" class="form-control form-control-sm " id="floatingInput" placeholder="Telephone">
+                            <input type="tel" class="form-control form-control-sm " name="telephoneClient" id="floatingInput" placeholder="Telephone">
                             <label for="floatingInput">Telephone</label>
                         </div>
 
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Un peu de commentaire..." id="floatingTextarea"></textarea>
+                            <textarea class="form-control" placeholder="Un peu de commentaire..." id="floatingTextarea" name="commentaireClient" ></textarea>
                             <label for="floatingTextarea">Commentaire</label>
                         </div>
 
@@ -96,7 +131,7 @@
 
                     <div class="row mt-3 d-flex justify-content-around options-card">
                         <a href="detailclient.php">ANNULER</a>
-                        <input type="submit" value="ENREGISTRER">
+                        <input type="submit" value="ENREGISTRER" name="save">
 
                     </div>
 
@@ -126,10 +161,16 @@
 
 
 
-<?php
+<?php 
+     }
+     else{
+        echo'erreur identifiant client';
+     }
     }
+    else{
+        echo 'Connectez-vous. Si vous navez pas de compte, creez en 1';
+    }
+
 ?>
-
-
 
 
