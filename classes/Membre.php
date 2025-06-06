@@ -230,7 +230,14 @@
             
         }
 
-        public function modifierClient(){
+        public function modifierNomClient($lienFichierBDD, $idClient, $nouveauNomClient){
+            include $lienFichierBDD;
+
+            $reqModifierNomClient = $connexionDataBase->prepare('UPDATE clientt SET nomclient = :nouveaunom WHERE idclient = :idclient');
+            $reqModifierNomClient -> execute(array(
+                'nouveaunom' => $nouveauNomClient,
+                'idclient' => $idClient
+            ));
             
         }
 

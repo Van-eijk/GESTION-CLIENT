@@ -124,6 +124,8 @@
                         </div>
 
                         <input type="file" id="photoClient" class="photo-client">
+
+                        <input type="hidden" value="<?php echo $idClientModifier ; ?>" name="idClientModifier">
                     
                     </div>
 
