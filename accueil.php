@@ -54,14 +54,15 @@
             <div class="row mt-3 d-flex justify-content-between list-costumer">
 
                 <?php
-                $reqAfficheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclientmembre = :userConnected');
+                $reqAfficheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclientmembre = :userConnected ORDER BY idclient DESC');
                 $reqAfficheClient ->execute(array(
                     'userConnected' => $idMembre 
                 ));
 
                 while($resultatReqAfficheClient = $reqAfficheClient->fetch()){  ?>
 
-                <a href="detailclient.php?idclient=<?php echo $resultatReqAfficheClient['idclient'] ;?>" class="m-1" id="">
+                <a href="detailclient.php?idclient=<?php echo $resultatReqAfficheClient['idclient'] ;?>" class="m-1"
+                    id="">
                     <div class="card item-card">
                         <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
                         <div class="card-body">

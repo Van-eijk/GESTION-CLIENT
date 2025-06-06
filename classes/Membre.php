@@ -241,6 +241,73 @@
             
         }
 
+
+
+
+        public function modifierPrenomClient($lienFichierBDD, $idClient, $nouveauPrenomClient){
+            include $lienFichierBDD;
+
+            $reqModifierPrenomClient = $connexionDataBase->prepare('UPDATE clientt SET prenomclient = :nouveauprenom WHERE idclient = :idclient');
+            $reqModifierPrenomClient -> execute(array(
+                'nouveauprenom' => $nouveauPrenomClient,
+                'idclient' => $idClient
+            ));
+            
+        }
+
+
+
+        public function modifierVilleClient($lienFichierBDD, $idClient, $nouvelleVilleClient){
+            include $lienFichierBDD;
+
+            $reqModifierVilleClient = $connexionDataBase->prepare('UPDATE clientt SET villeclient = :nouvelleville WHERE idclient = :idclient');
+            $reqModifierVilleClient -> execute(array(
+                'nouvelleville' => $nouvelleVilleClient,
+                'idclient' => $idClient
+            ));
+            
+        }
+
+
+
+
+        public function modifierQuartierClient($lienFichierBDD, $idClient, $nouveauQuartierClient){
+            include $lienFichierBDD;
+
+            $reqModifierQuartierClient = $connexionDataBase->prepare('UPDATE clientt SET quartierclient = :nouveauQuartierClient WHERE idclient = :idclient');
+            $reqModifierQuartierClient -> execute(array(
+                'nouveauQuartierClient' => $nouveauQuartierClient,
+                'idclient' => $idClient
+            ));
+            
+        }
+
+
+
+
+        public function modifierTelephoneClient($lienFichierBDD, $idClient, $nouveauTelephoneClient){
+            include $lienFichierBDD;
+
+            $reqModifierTelephoneClient = $connexionDataBase->prepare('UPDATE clientt SET telephoneclient = :nouveauTelephoneClient WHERE idclient = :idclient');
+            $reqModifierTelephoneClient -> execute(array(
+                'nouveauTelephoneClient' => $nouveauTelephoneClient,
+                'idclient' => $idClient
+            ));
+            
+        }
+
+
+        public function modifierCommentaireClient($lienFichierBDD, $idClient, $nouveauCommentaireClient){
+            include $lienFichierBDD;
+
+            $reqModifierCommentaireClient = $connexionDataBase->prepare('UPDATE clientt SET commentaireclient = :nouveauCommentaireClient WHERE idclient = :idclient');
+            $reqModifierCommentaireClient -> execute(array(
+                'nouveauCommentaireClient' => $nouveauCommentaireClient,
+                'idclient' => $idClient
+            ));
+            
+        }
+
         public function rechercherClient(){
             
         }
