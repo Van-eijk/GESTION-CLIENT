@@ -1,12 +1,12 @@
 .main-container{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     margin-top: 57px;
     min-width: 350px;
     
 }
 
 .search{
-    border: 5px solid yellow;
+    /*border: 5px solid yellow;*/
     margin: 0px 0px;
     padding: 0px 0px;
     min-width: 350px;
@@ -15,9 +15,12 @@
     left: 50%;*/
    
 }
+.search input{
+    border: 3px solid red;
+}
 
 .search form{
-    border: 4px solid red;
+    /*border: 4px solid red;*/
     max-width: 600px;
     min-width: 350px;
     /*margin: 0px 0px;
@@ -25,7 +28,7 @@
 }
 
 .list-costumer{
-    border: 3px solid red;
+    /*border: 3px solid red;*/
     margin: 0px 0px 0px 0px;
     margin-top: 300px;
     padding: 0px 0px;
@@ -34,35 +37,48 @@
 }
 
 .list-costumer a{
-    border: 2px solid green;
+    /*border: 2px solid green;*/
     margin: 0px 0px;
     padding: 0px 0px;
     width: 160px;
     display: inline-block;
+    text-decoration: none;
+    min-height: 280px;
+}
+
+.list-costumer h5, p{
+    text-decoration: none;
+    color: black;
 }
 
 .item-card{
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     width: 100%;
     /*height: 200px;*/
     margin: 0px 0px;
-    padding: 0px 0px;
+    padding: 5px 5px;
+    border-radius: 10px;
+}
+
+.item-card div{
+    min-height: 105px;
 }
 
 .item-card img{
-    border: 2px solid blueviolet;
+    /*border: 2px solid blueviolet;*/
     width: 100%;
     height: 160px;
 }
 
 .card-body{
-    border: 2px solid yellow;
+    /*border: 2px solid yellow;*/
     margin: 0px 0px;
     padding: 0px 0px;
 }
 
 .card-body p{
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     margin: 0px 0px;
     padding: 0px 0px;
 }
+

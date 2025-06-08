@@ -11,19 +11,19 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav ">
-                <li class="nav-item">
+                <li class="nav-item ps-3">
                     <a href="accueil.php" class="nav-link text-dark active">Accueil</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item ps-3">
                     <a href="ajouterclient.php" class="nav-link text-dark">Ajouter un client</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item ps-3">
                     <a href="profilmembre.php" class="nav-link text-dark"> <?php echo $_SESSION["pseudo"] ; ?></a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item ps-3">
                     <a href="deconnexionmembre.php" class="nav-link text-dark">Deconnexion</a>
                 </li>
             </ul>

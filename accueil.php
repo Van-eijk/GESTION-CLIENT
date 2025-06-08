@@ -31,8 +31,8 @@
 
 </head>
 
-<body>
-    <div class="container">
+<body class="">
+    <div class="container bg-light p-4">
         <?php include 'header.php'; ?>
 
         <div class="row main-container">
@@ -42,7 +42,8 @@
                 <form class="d-flex" role="search" action="" method="post">
                     <input class="form-control me-2" type="search" placeholder="Rechercher un client . . ."
                         aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+                    <button class="btn btn-outline-success" type="submit"><i
+                            class="bi bi-search fw-bolder"></i></button>
                 </form>
 
             </div>
@@ -51,7 +52,7 @@
 
 
 
-            <div class="row mt-3 d-flex justify-content-between list-costumer">
+            <div class="row mt-3 d-flex justify-content-star list-costumer">
 
                 <?php
                 $reqAfficheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclientmembre = :userConnected ORDER BY idclient DESC');
@@ -61,18 +62,21 @@
 
                 while($resultatReqAfficheClient = $reqAfficheClient->fetch()){  ?>
 
-                <a href="detailclient.php?idclient=<?php echo $resultatReqAfficheClient['idclient'] ;?>" class="m-1"
+                <a href="detailclient.php?idclient=<?php echo $resultatReqAfficheClient['idclient'] ;?>" class="m-3"
                     id="">
-                    <div class="card item-card">
+                    <div class="card item-card bg-info">
                         <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
                         <div class="card-body">
-                            <h5 class="card-title">
-                                <?php 
+                            <strong>
+                                <h5 class="card-title">
+                                    <?php 
                                 if($resultatReqAfficheClient['prenomclient'] == "Sans prenom"){
                                     $resultatReqAfficheClient['prenomclient'] = "";
                                 }
                                 echo $resultatReqAfficheClient['nomclient'] . ' ' .  $resultatReqAfficheClient['prenomclient'] ;?>
-                            </h5>
+                                </h5>
+                            </strong>
+
                             <p class="card-text"><?php echo $resultatReqAfficheClient['villeclient'] ;?></p>
                             <p class="card-text"><?php echo $resultatReqAfficheClient['telephoneclient'] ;?></p>
 
@@ -83,6 +87,11 @@
                 </a>
 
                 <?php
+                }
+
+                if(empty($resultatReqAfficheClient)){  ?>
+                <p style="text-align: center;"> </p>
+                <?php 
                 }
             ?>
 
