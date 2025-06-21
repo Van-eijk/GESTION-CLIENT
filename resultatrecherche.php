@@ -7,6 +7,14 @@
 <?php
     if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){ 
         $idMembre = $_SESSION["idmembre"] ;
+        if(isset($_POST["recherche"])){
+             if(!empty($_POST["motcle"])){
+
+                $motCle = $_POST["motcle"];
+                $symboleSql = '%';
+                $motCle = $symboleSql . $motCle . $symboleSql ;
+            
+           
     ?>
 
 
@@ -55,14 +63,14 @@
             <div class="row mt-3 d-flex justify-content-star list-costumer">
 
                 <?php
-                $reqAfficheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclientmembre = :userConnected ORDER BY idclient DESC');
-                $reqAfficheClient ->execute(array(
-                    'userConnected' => $idMembre 
+                $reqRechercheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE clientt.nomclient LIKE :motcle OR clientt.prenomclient LIKE :motcle ORDER BY idclient DESC');
+                $reqRechercheClient ->execute(array(
+                    'motcle' => $motCle 
                 ));
 
-                while($resultatReqAfficheClient = $reqAfficheClient->fetch()){  ?>
+                while($resultatReqRechercheClient = $reqRechercheClient->fetch()){  ?>
 
-                <a href="detailclient.php?idclient=<?php echo $resultatReqAfficheClient['idclient'] ;?>" class="m-3"
+                <a href="detailclient.php?idclient=<?php echo $resultatReqRechercheClient['idclient'] ;?>" class="m-3"
                     id="">
                     <div class="card item-card bg-info">
                         <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
@@ -70,15 +78,15 @@
                             <strong>
                                 <h5 class="card-title">
                                     <?php 
-                                if($resultatReqAfficheClient['prenomclient'] == "Sans prenom"){
-                                    $resultatReqAfficheClient['prenomclient'] = "";
+                                if($resultatReqRechercheClient['prenomclient'] == "Sans prenom"){
+                                    $resultatReqRechercheClient['prenomclient'] = "";
                                 }
-                                echo $resultatReqAfficheClient['nomclient'] . ' ' .  $resultatReqAfficheClient['prenomclient'] ;?>
+                                echo $resultatReqRechercheClient['nomclient'] . ' ' .  $resultatReqRechercheClient['prenomclient'] ;?>
                                 </h5>
                             </strong>
 
-                            <p class="card-text"><?php echo $resultatReqAfficheClient['villeclient'] ;?></p>
-                            <p class="card-text"><?php echo $resultatReqAfficheClient['telephoneclient'] ;?></p>
+                            <p class="card-text"><?php echo $resultatReqRechercheClient['villeclient'] ;?></p>
+                            <p class="card-text"><?php echo $resultatReqRechercheClient['telephoneclient'] ;?></p>
 
                             <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
 
@@ -87,13 +95,13 @@
                 </a>
 
                 <?php
-                }
+            }
+        }
 
-                if(empty($resultatReqAfficheClient)){  ?>
-                <p style="text-align: center;"> </p>
-                <?php 
-                }
-            ?>
+    }
+
+               
+?>
 
 
 
