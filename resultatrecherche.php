@@ -14,6 +14,7 @@
                 $symboleSql = '%';
                 $motCle = $symboleSql . $motCle . $symboleSql ;
                 $motCleSearchBare = $_POST["motcle"] ;
+
             
            
     ?>
@@ -64,9 +65,10 @@
             <div class="row mt-3 d-flex justify-content-star list-costumer">
 
                 <?php
-                $reqRechercheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE clientt.nomclient LIKE :motcle OR clientt.prenomclient LIKE :motcle ORDER BY idclient DESC');
+                $reqRechercheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE clientt.nomclient LIKE :motcle OR clientt.prenomclient LIKE :motcle AND idclientmembre = :idmembre  ORDER BY idclient DESC');
                 $reqRechercheClient ->execute(array(
-                    'motcle' => $motCle 
+                    'motcle' => $motCle,
+                    'idmembre' => $idMembre 
                 ));
 
                 if($reqRechercheClient -> rowCount() >= 1){
