@@ -102,7 +102,7 @@
                     <form action="index.php" method="post" class="mb-3">
                         <div class="form-floating mb-3">
                             <input type="text" name="pseudoCon" class="form-control form-control-sm " id="floatingInput"
-                                placeholder="bobo">
+                                placeholder="bobo" autofocus>
                             <label for="floatingInput">Pseudo</label>
                         </div>
                         <div class="form-floating mb-3">

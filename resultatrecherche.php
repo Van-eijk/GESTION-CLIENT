@@ -13,6 +13,7 @@
                 $motCle = $_POST["motcle"];
                 $symboleSql = '%';
                 $motCle = $symboleSql . $motCle . $symboleSql ;
+                $motCleSearchBare = $_POST["motcle"] ;
             
            
     ?>
@@ -49,7 +50,7 @@
             <div class="row d-flex justify-content-center search">
                 <form class="d-flex" role="search" action="resultatrecherche.php" method="post">
                     <input class="form-control me-2" name="motcle" type="search"
-                        placeholder="Rechercher un client . . ." aria-label="Search" />
+                        placeholder="Rechercher un client . . ." aria-label="Search" value="<?php echo $motCleSearchBare ; ?>" autofocus />
                     <button class="btn btn-outline-success" name="recherche" type="submit"><i
                             class="bi bi-search fw-bolder"></i></button>
                 </form>
@@ -68,34 +69,48 @@
                     'motcle' => $motCle 
                 ));
 
-                while($resultatReqRechercheClient = $reqRechercheClient->fetch()){  ?>
+                if($reqRechercheClient -> rowCount() >= 1){
+                    while($resultatReqRechercheClient = $reqRechercheClient->fetch()){  ?>
 
-                <a href="detailclient.php?idclient=<?php echo $resultatReqRechercheClient['idclient'] ;?>" class="m-3"
-                    id="">
-                    <div class="card item-card bg-info">
-                        <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
-                        <div class="card-body">
-                            <strong>
-                                <h5 class="card-title">
-                                    <?php 
-                                if($resultatReqRechercheClient['prenomclient'] == "Sans prenom"){
-                                    $resultatReqRechercheClient['prenomclient'] = "";
-                                }
-                                echo $resultatReqRechercheClient['nomclient'] . ' ' .  $resultatReqRechercheClient['prenomclient'] ;?>
-                                </h5>
-                            </strong>
+                    <a href="detailclient.php?idclient=<?php echo $resultatReqRechercheClient['idclient'] ;?>" class="m-3"
+                        id="">
+                        <div class="card item-card bg-info">
+                            <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
+                            <div class="card-body">
+                                <strong>
+                                    <h5 class="card-title">
+                                        <?php 
+                                    if($resultatReqRechercheClient['prenomclient'] == "Sans prenom"){
+                                        $resultatReqRechercheClient['prenomclient'] = "";
+                                    }
+                                    echo $resultatReqRechercheClient['nomclient'] . ' ' .  $resultatReqRechercheClient['prenomclient'] ;?>
+                                    </h5>
+                                </strong>
 
-                            <p class="card-text"><?php echo $resultatReqRechercheClient['villeclient'] ;?></p>
-                            <p class="card-text"><?php echo $resultatReqRechercheClient['telephoneclient'] ;?></p>
+                                <p class="card-text"><?php echo $resultatReqRechercheClient['villeclient'] ;?></p>
+                                <p class="card-text"><?php echo $resultatReqRechercheClient['telephoneclient'] ;?></p>
 
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
 
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
 
+
+                
+
+               
                 <?php
+                }
             }
+            else{ ?>
+                <p style=" text-align: center ;">Aucun resultat...</p>
+
+            <?php
+            }
+        }
+        else{
+            header('location:accueil.php');
         }
 
     }

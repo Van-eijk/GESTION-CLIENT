@@ -55,46 +55,60 @@
             <div class="row mt-3 d-flex justify-content-star list-costumer">
 
                 <?php
-                $reqAfficheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclientmembre = :userConnected ORDER BY idclient DESC');
-                $reqAfficheClient ->execute(array(
-                    'userConnected' => $idMembre 
-                ));
+                    $reqAfficheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclientmembre = :userConnected ORDER BY idclient DESC');
+                    $reqAfficheClient ->execute(array(
+                        'userConnected' => $idMembre 
+                    ));
 
-                while($resultatReqAfficheClient = $reqAfficheClient->fetch()){  ?>
+                    if($reqAfficheClient -> rowCount() >= 1){
 
-                <a href="detailclient.php?idclient=<?php echo $resultatReqAfficheClient['idclient'] ;?>" class="m-3"
-                    id="">
-                    <div class="card item-card bg-info">
-                        <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
-                        <div class="card-body">
-                            <strong>
-                                <h5 class="card-title">
-                                    <?php 
-                                if($resultatReqAfficheClient['prenomclient'] == "Sans prenom"){
-                                    $resultatReqAfficheClient['prenomclient'] = "";
-                                }
-                                echo $resultatReqAfficheClient['nomclient'] . ' ' .  $resultatReqAfficheClient['prenomclient'] ;?>
-                                </h5>
-                            </strong>
+                        while($resultatReqAfficheClient = $reqAfficheClient->fetch()){  ?>
 
-                            <p class="card-text"><?php echo $resultatReqAfficheClient['villeclient'] ;?></p>
-                            <p class="card-text"><?php echo $resultatReqAfficheClient['telephoneclient'] ;?></p>
+                        <a href="detailclient.php?idclient=<?php echo $resultatReqAfficheClient['idclient'] ;?>" class="m-3"
+                            id="">
+                            <div class="card item-card bg-info">
+                                <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
+                                <div class="card-body">
+                                    <strong>
+                                        <h5 class="card-title">
+                                            <?php 
+                                        if($resultatReqAfficheClient['prenomclient'] == "Sans prenom"){
+                                            $resultatReqAfficheClient['prenomclient'] = "";
+                                        }
+                                        echo $resultatReqAfficheClient['nomclient'] . ' ' .  $resultatReqAfficheClient['prenomclient'] ;?>
+                                        </h5>
+                                    </strong>
 
-                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                    <p class="card-text"><?php echo $resultatReqAfficheClient['villeclient'] ;?></p>
+                                    <p class="card-text"><?php echo $resultatReqAfficheClient['telephoneclient'] ;?></p>
 
-                        </div>
-                    </div>
-                </a>
+                                    <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+                                </div>
+                            </div>
+                        </a>
 
                 <?php
-                }
+                        }
 
-                if(empty($resultatReqAfficheClient)){  ?>
-                <p style="text-align: center;"> </p>
-                <?php 
-                }
-            ?>
+                    }
+                    else{ ?>
 
+                        <p style=" text-align: center ;">Aucun client enregistré pour le moment</p>
+
+                    
+                    <?php
+                    
+                    }
+
+
+               
+                ?>
+
+
+               
+
+                
 
 
 

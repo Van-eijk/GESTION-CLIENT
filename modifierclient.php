@@ -98,38 +98,38 @@
                         <div class="col-12 col-sm-8 mt-3 mt-sm-0 info-nom">
 
                             <div class="form-floating mb-3 nom-client">
-                                <input type="text" class="form-control form-control-sm " name="nomClient"
+                                <input type="text" class="form-control form-control-sm " value="<?php echo $resultatAfficheClientDetail["nomclient"] ; ?>" name="nomClient"
                                     id="floatingInput" placeholder="Nom">
                                 <label for="floatingInput">Nom</label>
                             </div>
 
                             <div class="form-floating mb-3 prenom-client">
                                 <input type="text" class="form-control form-control-sm " name="prenomClient"
-                                    id="floatingInput" placeholder="Prenom">
+                                    id="floatingInput" placeholder="Prenom" value="<?php echo $resultatAfficheClientDetail["prenomclient"] ; ?>">
                                 <label for="floatingInput">Prenom</label>
                             </div>
 
                             <div class="form-floating mb-3 ville-client">
                                 <input type="text" class="form-control form-control-sm " name="villeClient"
-                                    id="floatingInput" placeholder="Ville">
+                                    id="floatingInput" placeholder="Ville" value="<?php echo $resultatAfficheClientDetail["villeclient"] ; ?>">
                                 <label for="floatingInput">Ville</label>
                             </div>
 
                             <div class="form-floating mb-3 Quartie-client">
                                 <input type="text" class="form-control form-control-sm " name="quartierClient"
-                                    id="floatingInput" placeholder="Quartier">
+                                    id="floatingInput" placeholder="Quartier" value="<?php echo $resultatAfficheClientDetail["quartierclient"] ; ?>">
                                 <label for="floatingInput">Quartier</label>
                             </div>
 
                             <div class="form-floating mb-3 telephone-client">
                                 <input type="tel" class="form-control form-control-sm " name="telephoneClient"
-                                    id="floatingInput" placeholder="Telephone">
+                                    id="floatingInput" placeholder="Telephone" value="<?php echo $resultatAfficheClientDetail["telephoneclient"] ; ?>">
                                 <label for="floatingInput">Telephone</label>
                             </div>
 
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Un peu de commentaire..."
-                                    id="floatingTextarea" name="commentaireClient"></textarea>
+                                    id="floatingTextarea" name="commentaireClient" value="<?php echo $resultatAfficheClientDetail["commentaireclient"] ; ?>"></textarea>
                                 <label for="floatingTextarea">Commentaire</label>
                             </div>
 
