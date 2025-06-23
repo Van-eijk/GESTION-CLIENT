@@ -50,7 +50,7 @@
             <div class="row d-flex justify-content-center search">
                 <form class="d-flex" role="search" action="resultatrecherche.php" method="post">
                     <input class="form-control me-2" name="motcle" type="search"
-                        placeholder="Rechercher un client . . ." aria-label="Search" value="<?php echo $motCleSearchBare ; ?>" autofocus />
+                        placeholder="Rechercher un client . . ." aria-label="Search" value="<?php echo $motCleSearchBare ; ?>" />
                     <button class="btn btn-outline-success" name="recherche" type="submit"><i
                             class="bi bi-search fw-bolder"></i></button>
                 </form>
