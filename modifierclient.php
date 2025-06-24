@@ -129,7 +129,7 @@
 
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Un peu de commentaire..."
-                                    id="floatingTextarea" name="commentaireClient" value="<?php echo $resultatAfficheClientDetail["commentaireclient"] ; ?>"></textarea>
+                                    id="floatingTextarea" name="commentaireClient"><?php echo $resultatAfficheClientDetail["commentaireclient"] ; ?></textarea>
                                 <label for="floatingTextarea">Commentaire</label>
                             </div>
 
