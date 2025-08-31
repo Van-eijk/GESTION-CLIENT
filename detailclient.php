@@ -102,6 +102,8 @@
                     <a href="accueil.php">OK</a>
                     <a href="modifierclient.php?idclientmodifier=<?php echo  $idClient ;?>">MODIFIER</a>
                     <a href="supprimerclient.php?idclientsupprimer=<?php echo  $idClient ;?>">SUPPRIMER</a>
+                    <a href="imprimerclient.php?idclientimprimer=<?php echo  $idClient ;?>">IMPRIMER</a>
+
 
 
                 </div>
