@@ -18,12 +18,12 @@
             ));
             $resultatAfficheClientDetail = $reqAfficheDetailClient ->fetch();
 
-            $nomClient = 'Nom: ' . '' . $resultatAfficheClientDetail['nomclient'] ;
-            $prenomClient = 'Prenom: ' . '' . $resultatAfficheClientDetail['prenomclient'] ;
-            $telephoneClient = 'Telephone: ' . '' . $resultatAfficheClientDetail['telephoneclient'] ;
-            $commentaireClient = 'Commentaire: ' . '' . $resultatAfficheClientDetail['commentaireclient'] ;
-            $villeClient = 'Ville: ' . '' . $resultatAfficheClientDetail['villeclient'] ;
-            $quartierClient = 'Quartier: ' . '' . $resultatAfficheClientDetail['quartierclient'] ;
+            $nomClient = $resultatAfficheClientDetail['nomclient'] ;
+            $prenomClient = $resultatAfficheClientDetail['prenomclient'] ;
+            $telephoneClient = $resultatAfficheClientDetail['telephoneclient'] ;
+            $commentaireClient = $resultatAfficheClientDetail['commentaireclient'] ;
+            $villeClient = $resultatAfficheClientDetail['villeclient'] ;
+            $quartierClient = $resultatAfficheClientDetail['quartierclient'] ;
 
             // Generation du fichier PDF
 
@@ -39,30 +39,64 @@
             $pdf->setPrintHeader(false);
             $pdf->setPrintFooter(false);
             $pdf->AddPage();
-            $titre = "INFORMATION DU CLIENT $idClient";
+            $titre = "INFORMATIONS DU CLIENT $idClient";
 
             // Titre
             $pdf->SetFont('dejavusans','B', 16);
             $pdf->Cell(0, 10, $titre, 1, 1, 'C');
             $pdf->Cell(0, 10, ' ', 0, 1, 'C');
 
-            $pdf->Cell(0, 10, $nomClient, 0, 1, 'L');
-            $pdf->Cell(0, 10, ' ', 0, 1, 'L');
+            $pdf->SetFont('dejavusans','', 10); // Police du label
+            $pdf->Cell(0, 5, 'Nom :', 0, 1, 'L'); // Label
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
+            $pdf->SetFont('dejavusans','B', 13); // Police des données du client
+            $pdf->Cell(0, 6, $nomClient, 'B', 1, 'L'); // Données du client            
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
 
-            $pdf->Cell(0, 10, $prenomClient, 0, 1, 'L');
-            $pdf->Cell(0, 10, ' ', 0, 1, 'L');
+            
 
-            $pdf->Cell(0, 10, $villeClient, 0, 1, 'L');
-            $pdf->Cell(0, 10, ' ', 0, 1, 'L');
+            $pdf->SetFont('dejavusans','', 10); // Police du label
+            $pdf->Cell(0, 5, 'Prenom :', 0, 1, 'L'); // Label
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
+            $pdf->SetFont('dejavusans','B', 13); // Police des données du client
+            $pdf->Cell(0, 6, $prenomClient, 'B', 1, 'L'); // Données du client            
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
 
-            $pdf->Cell(0, 10, $quartierClient, 0, 1, 'L');
-            $pdf->Cell(0, 10, ' ', 0, 1, 'L');
 
-            $pdf->Cell(0, 10, $telephoneClient, 0, 1, 'L');
-            $pdf->Cell(0, 10, ' ', 0, 1, 'L');
 
-            $pdf->Cell(0, 10, $commentaireClient, 0, 1, 'L');
-            $pdf->Cell(0, 10, ' ', 0, 1, 'L');
+             $pdf->SetFont('dejavusans','', 10); // Police du label
+            $pdf->Cell(0, 5, 'Ville :', 0, 1, 'L'); // Label
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
+            $pdf->SetFont('dejavusans','B', 13); // Police des données du client
+            $pdf->Cell(0, 6, $villeClient, 'B',1 , 'L'); // Données du client            
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
+
+
+
+             $pdf->SetFont('dejavusans','', 10); // Police du label
+            $pdf->Cell(0, 5, 'Quartier :', 0, 1, 'L'); // Label
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
+            $pdf->SetFont('dejavusans','B', 13); // Police des données du client
+            $pdf->Cell(0, 6, $quartierClient, 'B',1 , 'L'); // Données du client            
+            //$pdf->Cell(0, 4, ' ', 0, 1, 'L'); // petit espace en dessous du label
+
+
+
+            $pdf->SetFont('dejavusans','', 10); // Police du label
+            $pdf->Cell(0, 5, 'Téléphone :', 0, 1, 'L'); // Label
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
+            $pdf->SetFont('dejavusans','B', 13); // Police des données du client
+            $pdf->Cell(0, 6, $telephoneClient, 'B',1 , 'L'); // Données du client            
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
+
+
+
+            $pdf->SetFont('dejavusans','', 10); // Police du label
+            $pdf->Cell(0, 5, 'Commentaire :', 0, 1, 'L'); // Label
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
+            $pdf->SetFont('dejavusans','B', 13); // Police des données du client
+            $pdf->Cell(0, 6, $commentaireClient, 'B',1 , 'L'); // Données du client            
+            //$pdf->Cell(0, 1, ' ', 0, 1, 'L'); // petit espace en dessous du label
 
 
             $pdfFile = $dir . "test4.pdf";
