@@ -13,7 +13,7 @@ class MYPDF extends TCPDF {
         // Logo
         $image_file = __DIR__.'/img/gestionclient.png';
         if (file_exists($image_file)) {
-            $this->Image($image_file, 15, 14, 55, 10, 'PNG');
+            $this->Image($image_file, 10, 14, 55, 10, 'PNG');
         }
         $userOnline = $_SESSION["pseudo"] ;
         
@@ -74,45 +74,57 @@ if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){
             // Ajouter une page
             $pdf->AddPage();
 
-            // SUPPRIMER ces lignes qui désactivent l'en-tête/pied :
-            // $pdf->setPrintHeader(false);
-            // $pdf->setPrintFooter(false);
+           
             
             // Contenu du document
-            $titre = "INFORMATIONS DES CLIENTS";
+            $titre = "REPERTOIRE DES CLIENTS";
             $pdf->SetFont('dejavusans','B', 11);
             $pdf->Cell(0, 10, $titre, 1, 1, 'C');
 
             $pdf->Cell(0, 10, ' ', 0, 1, 'C');
 
-            $largeurcellule = 30 ;
+            //$largeurcellule = 30 ;
 
             // Table Header
-            $pdf->Cell(10, 10, 'ID', 1, 0, 'C');
-            $pdf->Cell($largeurcellule, 10, 'NOM', 1, 0, 'C');
-            $pdf->Cell($largeurcellule, 10, 'PRENOM', 1, 0, 'C');
-            $pdf->Cell($largeurcellule, 10, 'TELEPHONE', 1, 0, 'C');
-            $pdf->Cell($largeurcellule, 10, 'VILLE', 1, 0, 'C');
-            $pdf->Cell($largeurcellule, 10, 'QUARTIER', 1, 0, 'C');
-            $pdf->Cell($largeurcellule, 10, 'COMMENTAIRE', 1, 1, 'C');
+
+
+            $html = '<table border="1" cellpadding="4" style=" border:5px solid blue; width:100%;">
+                <tr style="background-color:#d9edf7; font-weight:bold; text-align:center;">
+                
+                <th width="30">ID</th>
+
+                <th width="85">NOM</th>
+                <th width="80">PRENOM</th>
+                <th width="85">TELEPHONE</th>
+                <th width="70">VILLE</th>
+                <th width="80">QUARTIER</th>
+                <th width="108">COMMENTAIRE</th>
+                </tr>';
+
+            $pdf->SetFont('dejavusans','', 11);
 
 
             while($resultatReqAfficheClient = $reqAfficheClient->fetch()){
-
                 // Table Rows
-                $pdf->Cell(10, 10, $resultatReqAfficheClient['idclient'], 1, 0, 'C');
-                $pdf->Cell($largeurcellule, 10, $resultatReqAfficheClient['nomclient'], 1, 0, 'C');
-                $pdf->Cell($largeurcellule, 10, $resultatReqAfficheClient['prenomclient'], 1, 0, 'C');
-                $pdf->Cell($largeurcellule, 10, $resultatReqAfficheClient['telephoneclient'], 1, 0, 'C');
-                $pdf->Cell($largeurcellule, 10, $resultatReqAfficheClient['villeclient'], 1, 0, 'C');
-                $pdf->Cell($largeurcellule, 10, $resultatReqAfficheClient['quartierclient'], 1, 0, 'C');
-                $pdf->Cell($largeurcellule, 10, $resultatReqAfficheClient['commentaireclient'], 1, 1, 'C');
 
-                
+                $html .= '<tr>
+                            <td>'.$resultatReqAfficheClient['idclient'].'</td>
+                            <td>'.$resultatReqAfficheClient['nomclient'].'</td>
+                            <td>'.$resultatReqAfficheClient['prenomclient'].'</td>
+                            <td>'.$resultatReqAfficheClient['telephoneclient'].'</td>
+                            <td>'.$resultatReqAfficheClient['villeclient'].'</td>
+                            <td>'.$resultatReqAfficheClient['quartierclient'].'</td>
+                            <td>'.$resultatReqAfficheClient['commentaireclient'].'</td>
 
+                        </tr>';
 
 
             }
+
+            $html .= '</table>';
+
+            // ⚡ Insertion du tableau dans le PDF
+            $pdf->writeHTML($html, true, false, true, false, '');
 
            
 
@@ -138,17 +150,14 @@ if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){
             $pdf->SetTitle('PDF avec en-tête et pied de page');
             
             // CONFIGURATION ESSENTIELLE : Définir les marges
-            $pdf->SetMargins(15, 30, 15); // gauche, haut, droite
+            $pdf->SetMargins(15, 25, 15); // gauche, haut, droite
             $pdf->SetHeaderMargin(10);
             $pdf->SetFooterMargin(10);
             
             // Ajouter une page
             $pdf->AddPage();
 
-            // SUPPRIMER ces lignes qui désactivent l'en-tête/pied :
-            // $pdf->setPrintHeader(false);
-            // $pdf->setPrintFooter(false);
-            
+           
             // Contenu du document
             $titre = "INFORMATIONS DES CLIENTS";
             $pdf->SetFont('dejavusans','B', 16);
@@ -161,17 +170,6 @@ if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){
             $pdf->Output($pdfFile, 'D');
 
             }
-
-
-            /*$nomClient = $resultatAfficheClientDetail['nomclient'];
-            $prenomClient = $resultatAfficheClientDetail['prenomclient'];
-            $telephoneClient = $resultatAfficheClientDetail['telephoneclient'];
-            $commentaireClient = $resultatAfficheClientDetail['commentaireclient'];
-            $villeClient = $resultatAfficheClientDetail['villeclient'];
-            $quartierClient = $resultatAfficheClientDetail['quartierclient'];*/
-
-            // Création du dossier documents
-            
             
         
             
