@@ -20,6 +20,10 @@
                 </li>
 
                 <li class="nav-item ps-3">
+                    <a href="listeclient.php" class="nav-link text-dark">Liste clients</a>
+                </li>
+
+                <li class="nav-item ps-3">
                     <a href="profilmembre.php" class="nav-link text-dark"> <?php echo $_SESSION["pseudo"] ; ?></a>
                 </li>
 
