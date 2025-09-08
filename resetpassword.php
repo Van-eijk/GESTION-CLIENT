@@ -55,10 +55,14 @@
 
                     <div class="row d-flex justify-content-center formulaire pt-5 pb-5">
                         <div class="row icon-user">
-                        <p class="text-white" >Entrez votre nouveau mot de passe, <?php echo  $resultatAfficheMembre['pseudo'] ; ?></p>
+                            <p class="text-white" >Entrez votre nouveau mot de passe, <?php echo  $resultatAfficheMembre['pseudo'] ; ?></p>
                         </div>
 
                         <div class="row d-flex justify-content-center form-input">
+
+                            <div class="row icon-user">
+                            <p class="fw-bold text-danger" > <?php if(isset($_GET['em'])) echo $_GET['em'] ; ?></p>
+                            </div>
 
 
                             <form action="resetpassworddata.php" method="post" class="mb-3">

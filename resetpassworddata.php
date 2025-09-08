@@ -37,6 +37,10 @@
 
                     $pseudo = $resultatConMembre['pseudo'] ;
 
+                    // On détruit les variables de session qui ne nous servent plus
+                    unset($_SESSION['address']);
+                    unset($_SESSION['codeDeVerification']);
+
                     $lienFichierBDD = "database/configdatabase.php";
                     $lienPageAccueil ='location:accueil.php';
                     $conMembre = new Membre();

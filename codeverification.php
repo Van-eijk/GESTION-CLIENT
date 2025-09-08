@@ -18,7 +18,7 @@
 
             }
             else{
-                echo "Code incorrect";
+                $erreurCode = "Code incorrect";
             }
             
 
@@ -56,6 +56,10 @@
                     
 
                     <div class="row d-flex justify-content-center formulaire pt-5 pb-5">
+                        <div class="row icon-user">
+                            <p class="fw-bold text-danger" > <?php if(isset($erreurCode)) echo $erreurCode ; ?></p>
+                        </div>
+
                         <div class="row icon-user">
                         <p class="text-white" >Entrez le code de vérification</p>
                         </div>

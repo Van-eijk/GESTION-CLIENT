@@ -29,6 +29,9 @@
                 </div>
 
                 <div class="row d-flex justify-content-center form-input">
+                    <div class="row icon-user">
+                        <p class="fw-bold text-danger" > <?php if(isset($_GET['em'])) echo $_GET['em'] ; ?></p>
+                    </div>
                     <form action="motpasseoubliedata.php" method="post" class="mb-3">
                         <div class="form-floating mb-3">
                             <input type="email" name="mailuser" class="form-control form-control-sm " id="floatingInput" placeholder="Email">

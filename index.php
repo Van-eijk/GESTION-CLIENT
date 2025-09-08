@@ -89,7 +89,7 @@
 
             <div class="row d-flex justify-content-center formulaire pt-2 pb-2">
                 <div class="row message">
-                    <p class=""><?php if(!empty($erreurConnexion)) echo $erreurConnexion ; ?></p>
+                    <p class="fw-bold text-danger"><?php if(!empty($erreurConnexion)) echo $erreurConnexion ; ?></p>
                 </div>
                 <div class="row icon-user">
                     <span class="d-flex justify-content-center">
