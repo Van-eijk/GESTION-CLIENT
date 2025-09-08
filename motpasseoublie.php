@@ -29,15 +29,15 @@
                 </div>
 
                 <div class="row d-flex justify-content-center form-input">
-                    <form action="" method="post" class="mb-3">
+                    <form action="motpasseoubliedata.php" method="post" class="mb-3">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control form-control-sm " id="floatingInput" placeholder="Email">
+                            <input type="email" name="mailuser" class="form-control form-control-sm " id="floatingInput" placeholder="Email">
                             <label for="floatingInput">Email</label>
                         </div>
                         
 
                         <div class="row d-flex justify-content-center ">
-                            <button type="submit" class="btn btn-danger w-25 p-2">Envoyer</button>
+                            <button type="submit" class="btn btn-danger w-25 p-2" name="send">Envoyer</button>
 
                         </div>
                     </form>

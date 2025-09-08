@@ -89,7 +89,7 @@
 
             <div class="row d-flex justify-content-center formulaire pt-2 pb-2">
                 <div class="row message">
-                    <p class=""></p>
+                    <p class=""><?php if(!empty($erreurConnexion)) echo $erreurConnexion ; ?></p>
                 </div>
                 <div class="row icon-user">
                     <span class="d-flex justify-content-center">
@@ -102,12 +102,12 @@
                     <form action="index.php" method="post" class="mb-3">
                         <div class="form-floating mb-3">
                             <input type="text" name="pseudoCon" class="form-control form-control-sm " id="floatingInput"
-                                placeholder="bobo" autofocus>
+                                placeholder="bobo" autofocus required>
                             <label for="floatingInput">Pseudo</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="password" name="motDePasseCon" class="form-control form-control-sm"
-                                id="floatingPassword" placeholder="Password">
+                                id="floatingPassword" placeholder="Password" required>
                             <label for="floatingPassword">Mot de passe</label>
                         </div>
 

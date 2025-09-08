@@ -78,7 +78,7 @@ if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){
             
             // Contenu du document
             $titre = "REPERTOIRE DES CLIENTS";
-            $pdf->SetFont('dejavusans','B', 11);
+            $pdf->SetFont('dejavusans','B', 13);
             $pdf->Cell(0, 10, $titre, 1, 1, 'C');
 
             $pdf->Cell(0, 10, ' ', 0, 1, 'C');
@@ -91,9 +91,9 @@ if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){
             $html = '<table border="1" cellpadding="4" style=" border:5px solid blue; width:100%;">
                 <tr style="background-color:#d9edf7; font-weight:bold; text-align:center;">
                 
-                <th width="30">ID</th>
+                <th width="30" style="text-align:center;">ID</th>
 
-                <th width="85">NOM</th>
+                <th width="85" >NOM</th>
                 <th width="80">PRENOM</th>
                 <th width="85">TELEPHONE</th>
                 <th width="70">VILLE</th>
@@ -108,7 +108,7 @@ if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){
                 // Table Rows
 
                 $html .= '<tr>
-                            <td>'.$resultatReqAfficheClient['idclient'].'</td>
+                            <td style="text-align:center;">'.$resultatReqAfficheClient['idclient'].'</td>
                             <td>'.$resultatReqAfficheClient['nomclient'].'</td>
                             <td>'.$resultatReqAfficheClient['prenomclient'].'</td>
                             <td>'.$resultatReqAfficheClient['telephoneclient'].'</td>
