@@ -29,3 +29,9 @@ dateajoutclient TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 CONSTRAINT pk_clientt PRIMARY KEY(idclient),
 CONSTRAINT fk_client_membre FOREIGN KEY(idclientmembre) REFERENCES membre(idmembre))
 ENGINE = INNODB ;
+
+
+/* Inclusion des caractères avec accents dans la table client*/
+
+ALTER TABLE clientt CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+

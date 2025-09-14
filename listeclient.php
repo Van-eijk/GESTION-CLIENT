@@ -108,13 +108,13 @@ if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){
                 // Table Rows
 
                 $html .= '<tr>
-                            <td style="text-align:center;">'.$resultatReqAfficheClient['idclient'].'</td>
-                            <td>'.$resultatReqAfficheClient['nomclient'].'</td>
-                            <td>'.$resultatReqAfficheClient['prenomclient'].'</td>
-                            <td>'.$resultatReqAfficheClient['telephoneclient'].'</td>
-                            <td>'.$resultatReqAfficheClient['villeclient'].'</td>
-                            <td>'.$resultatReqAfficheClient['quartierclient'].'</td>
-                            <td>'.$resultatReqAfficheClient['commentaireclient'].'</td>
+                            <td style="text-align:center;">'.htmlspecialchars($resultatReqAfficheClient['idclient']).'</td>
+                            <td>'.htmlspecialchars($resultatReqAfficheClient['nomclient']).'</td>
+                            <td>'.htmlspecialchars($resultatReqAfficheClient['prenomclient']).'</td>
+                            <td>'.htmlspecialchars($resultatReqAfficheClient['telephoneclient']).'</td>
+                            <td>'.htmlspecialchars($resultatReqAfficheClient['villeclient']).'</td>
+                            <td>'.htmlspecialchars($resultatReqAfficheClient['quartierclient']).'</td>
+                            <td>'.htmlspecialchars($resultatReqAfficheClient['commentaireclient']).'</td>
 
                         </tr>';
 

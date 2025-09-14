@@ -60,10 +60,9 @@
 
                         <div class="row d-flex justify-content-center form-input">
 
-                            <div class="row icon-user">
-                            <p class="fw-bold text-danger" > <?php if(isset($_GET['em'])) echo $_GET['em'] ; ?></p>
+                           <div class="row message">
+                                <p class="fw-bold text-danger"><?php if(isset($_GET['pwddiff'])) echo $_GET['pwddiff'] ; ?></p>
                             </div>
-
 
                             <form action="resetpassworddata.php" method="post" class="mb-3">
                                 <div class="form-floating mb-3">

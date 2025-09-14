@@ -48,14 +48,17 @@
 
                     $conMembre->connexionMembre($pseudo, $pwd, $lienFichierBDD, $lienPageAccueil );
 
-                    if($conMembre->connexionMembre($pseudo, $pwd, $lienFichierBDD, $lienPageAccueil) == false){
-                        $erreurConnexion = "Pseudo ou mot de passe incorrect";
-
-                    }
+                    
 
                     
 
                     
+
+                }
+                else{
+
+                    $erreurpwd = "Les 2 mots de passe sont différents !" ;
+                    header("Location:resetpassword.php?pwddiff=$erreurpwd");
 
                 }
         
