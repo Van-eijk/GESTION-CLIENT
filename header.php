@@ -28,7 +28,9 @@
                 </li>
 
                 <li class="nav-item ps-3">
-                    <a href="deconnexionmembre.php" class="nav-link text-dark">Deconnexion</a>
+                     <!-- Confert popupdeconnexion.php -->
+
+                    <a class="nav-link text-dark"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style=" cursor: pointer;">Deconnexion</a>
                 </li>
             </ul>
 

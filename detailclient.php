@@ -41,17 +41,19 @@
 <body>
     <div class="container">
         <?php include 'header.php'; ?>
+        <?php include 'popupdeconnexion.php'; //Confirmation de déconnexion de l'utilisateur ?>
+
         <div class="row main-container">
 
 
             <?php 
-                            $reqAfficheDetailClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclient = :idcliente');
-                            $reqAfficheDetailClient ->execute(array(
-                                'idcliente'=> $idClient
-                            ));
-                            $resultatAfficheClientDetail = $reqAfficheDetailClient ->fetch();
+                $reqAfficheDetailClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclient = :idcliente');
+                $reqAfficheDetailClient ->execute(array(
+                    'idcliente'=> $idClient
+                ));
+                $resultatAfficheClientDetail = $reqAfficheDetailClient ->fetch();
                         
-                        ?>
+            ?>
 
 
 
@@ -98,11 +100,17 @@
 
                 </div>
 
+                <?php include 'popupsupprimerclient.php'; //Confirmation de déconnexion de l'utilisateur ?>
+
+
                 <div class="row mt-3 d-flex justify-content-around options-card">
                     <a href="accueil.php">OK</a>
                     <a href="modifierclient.php?idclientmodifier=<?php echo  $idClient ;?>">MODIFIER</a>
-                    <a href="supprimerclient.php?idclientsupprimer=<?php echo  $idClient ;?>">SUPPRIMER</a>
+
+                    <!-- Confert popupsupprimerclient.php -->
+                    <a class="nav-link text-dark"  data-bs-toggle="modal" data-bs-target="#staticDeleteCustumer" style=" cursor: pointer;">Supprimer</a>
                     <a href="imprimerclient.php?idclientimprimer=<?php echo  $idClient ;?>">IMPRIMER</a>
+
 
 
 

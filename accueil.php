@@ -34,6 +34,11 @@
 <body class="">
     <div class="container bg-light p-4">
         <?php include 'header.php'; ?>
+        <?php include 'popupdeconnexion.php'; //Confirmation de déconnexion de l'utilisateur ?>
+
+
+
+       
 
         <div class="row main-container">
 

@@ -3,121 +3,128 @@
     include 'database/configdatabase.php';
 ?>
 
-
 <?php
-    if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){ 
-        $idMembre = $_SESSION["idmembre"] ;
-        if(isset($_POST["recherche"])){
-             if(!empty($_POST["motcle"])){
+    if(isset($_POST["motcle"])){
 
-                $motCle = $_POST["motcle"];
-                $symboleSql = '%';
-                $motCle = $symboleSql . $motCle . $symboleSql ;
-                $motCleSearchBare = $_POST["motcle"] ;
+        if(isset($_SESSION["idmembre"]) && isset($_SESSION["pseudo"])){ 
+            $idMembre = $_SESSION["idmembre"] ;
+            if(isset($_POST["recherche"])){
+                if(!empty($_POST["motcle"])){
+
+                    $motCle = $_POST["motcle"];
+                    $symboleSql = '%';
+                    $motCle = $symboleSql . $motCle . $symboleSql ;
+                    $motCleSearchBare = $_POST["motcle"] ;
 
             
            
-    ?>
+        ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
+        <!DOCTYPE html>
+        <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Accueil</title>
 
-    <!-- lien pour integrer le framework boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <script src="https://kit.fontawesome.com/14273d579a.js" crossorigin="anonymous"></script>
+            <!-- lien pour integrer le framework boostrap -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+                integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+            <script src="https://kit.fontawesome.com/14273d579a.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/accueil.css">
-
-
-
-</head>
-
-<body class="">
-    <div class="container bg-light p-4">
-        <?php include 'header.php'; ?>
-
-        <div class="row main-container">
-
-
-            <div class="row d-flex justify-content-center search">
-                <form class="d-flex" role="search" action="resultatrecherche.php" method="post">
-                    <input class="form-control me-2" name="motcle" type="search"
-                        placeholder="Rechercher un client . . ." aria-label="Search" value="<?php echo $motCleSearchBare ; ?>" />
-                    <button class="btn btn-outline-success" name="recherche" type="submit"><i
-                            class="bi bi-search fw-bolder"></i></button>
-                </form>
-
-            </div>
+            <link rel="stylesheet" href="css/header.css">
+            <link rel="stylesheet" href="css/accueil.css">
 
 
 
+        </head>
+
+        <body class="">
+            <div class="container bg-light p-4">
+                <?php include 'header.php'; ?>
+
+                <div class="row main-container">
 
 
-            <div class="row mt-3 d-flex justify-content-star list-costumer">
+                    <div class="row d-flex justify-content-center search">
+                        <form class="d-flex" role="search" action="resultatrecherche.php" method="post">
+                            <input class="form-control me-2" name="motcle" type="search"
+                                placeholder="Rechercher un client . . ." aria-label="Search" value="<?php echo $motCleSearchBare ; ?>" />
+                            <button class="btn btn-outline-success" name="recherche" type="submit"><i
+                                    class="bi bi-search fw-bolder"></i></button>
+                        </form>
 
-                <?php
-                $reqRechercheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE clientt.nomclient LIKE :motcle OR clientt.prenomclient LIKE :motcle AND idclientmembre = :idmembre  ORDER BY idclient DESC');
-                $reqRechercheClient ->execute(array(
-                    'motcle' => $motCle,
-                    'idmembre' => $idMembre 
-                ));
-
-                if($reqRechercheClient -> rowCount() >= 1){
-                    while($resultatReqRechercheClient = $reqRechercheClient->fetch()){  ?>
-
-                    <a href="detailclient.php?idclient=<?php echo $resultatReqRechercheClient['idclient'] ;?>" class="m-3"
-                        id="">
-                        <div class="card item-card bg-info">
-                            <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
-                            <div class="card-body">
-                                <strong>
-                                    <h5 class="card-title">
-                                        <?php 
-                                    if($resultatReqRechercheClient['prenomclient'] == "Sans prenom"){
-                                        $resultatReqRechercheClient['prenomclient'] = "";
-                                    }
-                                    echo $resultatReqRechercheClient['nomclient'] . ' ' .  $resultatReqRechercheClient['prenomclient'] ;?>
-                                    </h5>
-                                </strong>
-
-                                <p class="card-text"><?php echo $resultatReqRechercheClient['villeclient'] ;?></p>
-                                <p class="card-text"><?php echo $resultatReqRechercheClient['telephoneclient'] ;?></p>
-
-                                <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
-
-                            </div>
-                        </div>
-                    </a>
+                    </div>
 
 
-                
 
-               
-                <?php
+
+
+                    <div class="row mt-3 d-flex justify-content-star list-costumer">
+
+                        <?php
+                        $reqRechercheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE clientt.nomclient LIKE :motcle OR clientt.prenomclient LIKE :motcle AND idclientmembre = :idmembre  ORDER BY idclient DESC');
+                        $reqRechercheClient ->execute(array(
+                            'motcle' => $motCle,
+                            'idmembre' => $idMembre 
+                        ));
+
+                        if($reqRechercheClient -> rowCount() >= 1){
+                            while($resultatReqRechercheClient = $reqRechercheClient->fetch()){  ?>
+
+                            <a href="detailclient.php?idclient=<?php echo $resultatReqRechercheClient['idclient'] ;?>" class="m-3"
+                                id="">
+                                <div class="card item-card bg-info">
+                                    <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
+                                    <div class="card-body">
+                                        <strong>
+                                            <h5 class="card-title">
+                                                <?php 
+                                            if($resultatReqRechercheClient['prenomclient'] == "Sans prenom"){
+                                                $resultatReqRechercheClient['prenomclient'] = "";
+                                            }
+                                            echo $resultatReqRechercheClient['nomclient'] . ' ' .  $resultatReqRechercheClient['prenomclient'] ;?>
+                                            </h5>
+                                        </strong>
+
+                                        <p class="card-text"><?php echo $resultatReqRechercheClient['villeclient'] ;?></p>
+                                        <p class="card-text"><?php echo $resultatReqRechercheClient['telephoneclient'] ;?></p>
+
+                                        <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        
+
+                    
+                        <?php
+                        }
+                    }
+                    else{ ?>
+                        <p style=" text-align: center ;">Aucun resultat...</p>
+
+                    <?php
+                    }
                 }
-            }
-            else{ ?>
-                <p style=" text-align: center ;">Aucun resultat...</p>
+                else{
+                    header('location:accueil.php');
+                }
 
-            <?php
             }
-        }
-        else{
-            header('location:accueil.php');
-        }
+
+                    
+        
+
+    }else{
+        header('location:accueil.php');
 
     }
-
-               
 ?>
 
 

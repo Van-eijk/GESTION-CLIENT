@@ -35,6 +35,8 @@
 <body>
     <div class="container">
         <?php include 'header.php'; ?>
+        <?php include 'popupdeconnexion.php'; //Confirmation de déconnexion de l'utilisateur ?>
+
         <div class="row main-container">
 
             <?php
