@@ -1,3 +1,12 @@
+html{
+    margin: 0px 0px;
+    padding: 0px 0px;
+    min-width: 380px;
+    /*border: 1px solid black;*/
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
 .main-container{
     /*border: 1px solid black;*/
     margin-top: 57px;
@@ -27,10 +36,6 @@
     padding: 0px 0px;*/
 }
 
-.carte{
-    max-width: 200px;
-}
-
 .list-costumer{
     /*border: 3px solid red;*/
     margin: 0px 0px 0px 0px;
@@ -47,29 +52,28 @@
     width: 100%;
     display: inline-block;
     text-decoration: none;
-    min-height: 280px;
+    /*min-height: 280px;*/
 
 }
 .icon{
     margin: 0px 0px;
     padding: 0px 0px;
-    width: 100%;
-    /*height: 50px;
-    border: 2px solid black;*/
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
 }
 .icon img{
-    width: 100%;
-     /*height: 50px;*/
+    width: 50px;
+    height: 50px;
     margin: 0px 0px;
     padding: 0px 0px;
     border-radius: 5px;
     /*border: 3px solid blueviolet;*/
 }
-
 
 .list-costumer h5, p{
     text-decoration: none;
@@ -82,24 +86,25 @@
     /*height: 200px;*/
     margin: 0px 0px;
     padding: 5px 5px;
-    border-radius: 10px;
+    border-radius: 5px;
+    /*background-color: red;*/
+    height: 60px;
+    display: flex;
+    justify-content: center;
 }
 
-.item-card div{
-    min-height: 120px;
-    text-align: center;
-}
+/*.item-card div{
+    min-height: 105px;
+}*/
 
-.item-card img{
-    /*border: 2px solid blueviolet;*/
-    width: 100%;
-    height: 160px;
-}
+
 
 .card-body{
-    /*border: 2px solid yellow;*/
+    /*border: 2px solid blue;*/
     margin: 0px 0px;
-    padding: 0px 0px;
+    padding: 5px 5px;
+    height: 60px;
+    
 }
 
 .card-body p{

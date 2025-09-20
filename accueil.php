@@ -25,7 +25,15 @@
     <script src="https://kit.fontawesome.com/14273d579a.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/accueil.css">
+
+    <!-- media query responsive -->
+
+    <link rel="stylesheet" href="css/accueil2.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="css/accueil.css" media="screen and (min-width: 768px)">
+
+
+
+
 
 
 
@@ -60,7 +68,7 @@
             <div class="row mt-3 d-flex justify-content-star list-costumer">
 
                 <?php
-                    $reqAfficheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclientmembre = :userConnected ORDER BY idclient DESC');
+                    $reqAfficheClient = $connexionDataBase ->prepare('SELECT * FROM clientt WHERE idclientmembre = :userConnected ORDER BY idclient DESC ');
                     $reqAfficheClient ->execute(array(
                         'userConnected' => $idMembre 
                     ));
@@ -69,29 +77,34 @@
 
                         while($resultatReqAfficheClient = $reqAfficheClient->fetch()){  ?>
 
-                        <a href="detailclient.php?idclient=<?php echo $resultatReqAfficheClient['idclient'] ;?>" class="m-3"
-                            id="">
-                            <div class="card item-card bg-info">
-                                <img src="img/defaultuser.jpg" class="card-img-top" alt="portrait">
-                                <div class="card-body">
-                                    <strong>
-                                        <h5 class="card-title">
-                                            <?php 
-                                        if($resultatReqAfficheClient['prenomclient'] == "Sans prenom"){
-                                            $resultatReqAfficheClient['prenomclient'] = "";
-                                        }
-                                        echo $resultatReqAfficheClient['nomclient'] . ' ' .  $resultatReqAfficheClient['prenomclient'] ;?>
-                                        </h5>
-                                    </strong>
+                            <div class="col-12 col-md-4 col-lg-3  p-1 p-md-2 carte">
+                                <a href="detailclient.php?idclient=<?php echo $resultatReqAfficheClient['idclient'] ;?>" class=""
+                                id="">
+                                    <div class="card item-card d-flex flex-row align-items-center flex-md-column bg-info">
+                                        <span class="icon">
+                                            <img src="img/defaultuser.jpg" class="" alt="portrait">
 
-                                    <p class="card-text"><?php echo $resultatReqAfficheClient['villeclient'] ;?></p>
-                                    <p class="card-text"><?php echo $resultatReqAfficheClient['telephoneclient'] ;?></p>
+                                        </span>
+                                        <div class="card-body d-flex flex-row align-items-center flex-md-column">
+                                            <strong>
+                                                <h5 class="card-title d-flex align-items-center p-1">
+                                                    <?php 
+                                                if($resultatReqAfficheClient['prenomclient'] == "Sans prenom"){
+                                                    $resultatReqAfficheClient['prenomclient'] = "";
+                                                }
+                                                echo $resultatReqAfficheClient['nomclient'] . ' ' .  $resultatReqAfficheClient['prenomclient'] ;?>
+                                                </h5>
+                                            </strong>
 
-                                    <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                            <p class="card-text d-none d-md-block"><?php echo $resultatReqAfficheClient['villeclient'] ;?></p>
+                                            <p class="card-text d-none d-md-block"><?php echo $resultatReqAfficheClient['telephoneclient'] ;?></p>
 
-                                </div>
+                                            <!--  <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
 
                 <?php
                         }
@@ -111,32 +124,6 @@
                 ?>
 
 
-               
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             </div>
         </div>
@@ -147,6 +134,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+    
 
 </body>
 
